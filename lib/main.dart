@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:uac_concours/pages/home.dart';
 
 import 'constant/colors.dart';
 import 'constant/strings.dart';
-import 'helper_tools/drawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,124 +39,26 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
-  Drawer _createDrawer(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        children:<Widget>[
 
-          DrawerHeader(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/woo.png"),
-                    fit: BoxFit.fitHeight)),
-            child: Text(" "),
-          ),
-          Divider(
-            height: 64,
-            thickness: 0.5,
-            color: Colors.black.withOpacity(0.5),
-            indent: 32,
-            endIndent: 32,
-          ),
-          ListTile(
-            title: Text(
-              accueil,
-              style: TextStyle(
-                color: themeColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            // subtitle: Text("follow us on facebook"),
-            dense: true,
-            leading: Icon(Icons.star_border,color: themeColor,),
-            onTap: () {
-
-            },
-          ),
-          SizedBox(height: 16,),
-          ListTile(
-            title: Text(
-              about,
-              style: TextStyle(
-                color: themeColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            // subtitle: Text("follow us on facebook"),
-            dense: true,
-            leading: Icon(Icons.star_border,color: themeColor,),
-            onTap: () {
-
-            },
-          ),
-          SizedBox(height: 16,),
-          Divider(
-            height: 64,
-            thickness: 0.5,
-            color: Colors.black.withOpacity(0.5),
-            indent: 32,
-            endIndent: 32,
-          ),
-        ],
-      ),
-    );
-
-  }
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>with TickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> {
 
-
-
-  TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = new TabController(vsync:this,
-        length: 2);
-
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget.title),
-          bottom: new TabBar(
-            tabs: <Tab>[
-              new Tab(
-                text: "STATISTICS",
-                icon: new Icon(Icons.show_chart),
-              ),
-              new Tab(
-                text: "HISTORY",
-                icon: new Icon(Icons.history),
-              ),
-            ],
-            controller: _tabController,
-          ),
-        ),
-        drawer: widget._createDrawer(context),
-        body: new TabBarView(
-          children: <Widget>[
-            new Container(),
-            new Container(),
-          ],
-          controller: _tabController,
-        ),
+    return MaterialApp(
+      title: widget.title,
+      theme: ThemeData(
 
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: Home(title: accueil,),
     );
 }
+
 }

@@ -1,21 +1,23 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
 import 'package:uac_concours/constant/strings.dart';
 import 'package:uac_concours/pages/partenaires.dart';
-import 'package:uac_concours/pages/ressources_educative.dart';
 
 import 'authenticate.dart';
+import 'home.dart';
 import 'opportunities.dart';
 
-class Home extends StatefulWidget {
+class Resources extends StatefulWidget {
 
 
-  Home({Key key, this.title}) : super(key: key);
+  Resources({Key key, this.title}) : super(key: key);
 
   final String title;
   @override
-  _HomeState createState() => _HomeState();
+  _ResourcesState createState() => _ResourcesState();
 
   Drawer _createDrawer(BuildContext context) {
     return Drawer(
@@ -165,6 +167,8 @@ class Home extends StatefulWidget {
             },
           ),
           SizedBox(height: 16,),
+
+
           Divider(
             height: 64,
             thickness: 0.5,
@@ -181,7 +185,7 @@ class Home extends StatefulWidget {
 }
 
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
+class _ResourcesState extends State<Resources> with TickerProviderStateMixin {
 
   String displayPage;
 
@@ -214,17 +218,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         bottom: new TabBar(
           tabs: <Tab>[
             new Tab(
-              text: actuality,
-              icon: new Icon(Icons.new_releases),
+              text: trucs_astuces,
+              icon: new Icon(Icons.book),
             ),
             new Tab(
-              text: publication,
-              icon: new Icon(Icons.public
+              text: podcast,
+              icon: new Icon(Icons.control_point_duplicate
               ),
             ),
             new Tab(
-              text:galerie,
-              icon: new Icon(Icons.picture_in_picture),
+              text:foire_question,
+              icon: new Icon(Icons.filter_center_focus
+              ),
             ),
           ],
           controller: _tabController,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
@@ -6,16 +8,16 @@ import 'package:uac_concours/pages/partenaires.dart';
 import 'package:uac_concours/pages/ressources_educative.dart';
 
 import 'authenticate.dart';
-import 'opportunities.dart';
+import 'home.dart';
 
-class Home extends StatefulWidget {
+class Opportunities extends StatefulWidget {
 
 
-  Home({Key key, this.title}) : super(key: key);
+  Opportunities({Key key, this.title}) : super(key: key);
 
   final String title;
   @override
-  _HomeState createState() => _HomeState();
+  _OpportunitiesState createState() => _OpportunitiesState();
 
   Drawer _createDrawer(BuildContext context) {
     return Drawer(
@@ -165,6 +167,8 @@ class Home extends StatefulWidget {
             },
           ),
           SizedBox(height: 16,),
+
+
           Divider(
             height: 64,
             thickness: 0.5,
@@ -181,27 +185,24 @@ class Home extends StatefulWidget {
 }
 
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
+class _OpportunitiesState extends State<Opportunities> {
 
   String displayPage;
 
-  TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync:this,
-        length: 2);
 
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+  getOpportunities(){
+    return null;
   }
+
 
   Future<bool> onBackPress() {
+    exit(0);
     return Future.value(false);
   }
 
@@ -211,49 +212,72 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
-        bottom: new TabBar(
-          tabs: <Tab>[
-            new Tab(
-              text: actuality,
-              icon: new Icon(Icons.new_releases),
-            ),
-            new Tab(
-              text: publication,
-              icon: new Icon(Icons.public
-              ),
-            ),
-            new Tab(
-              text:galerie,
-              icon: new Icon(Icons.picture_in_picture),
-            ),
-          ],
-          controller: _tabController,
-        ),
+
       ),
       drawer: widget._createDrawer(context),
-      body: new TabBarView(
-        children: <Widget>[
-          new Container(),
-          new Container(),
-          new Container()
-        ],
-        controller: _tabController,
+      body: WillPopScope(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              child:FutureBuilder<List>(
+                future: getOpportunities(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) print(snapshot.error);
+                  return snapshot.hasData
+                      ? buildItemList(context,snapshot.data)
+                      : new Center(
+                    child: new CircularProgressIndicator(),
+                  );
+                },
+              )
+            ),
+
+          ],
+        ),
+        onWillPop: onBackPress,
       ),
 
     );
 
-    // switch(displayPage){
-    //   case accueil:
-    //     return Container();
-    //     break;
-    //   case about:
-    //     return Container();
-    //     break;
-    //   default:
-    //     return Container();
-    //     break;
-    // }
   }
 
+
+  Widget buildItemList(BuildContext context,List list) {
+
+    return  ListView.builder(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      itemCount: list == null ? 0 : list.length,
+      itemBuilder: (context, i) {
+        return new Container(
+            padding: const EdgeInsets.only(bottom: 5.0, top: 5.0, left:10.0,right: 10.0),
+            child: new GestureDetector(
+              onTap: ()  {
+
+              },
+
+              child: new Card(
+                elevation: 8.0,
+                child: new ListTile(
+                  title: new Text(
+                    "", // column name in the table
+                    style: TextStyle(
+                        color: themeColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
+                  ),
+                  subtitle: Text(
+                    "", // column name in the table
+                    style: TextStyle(
+                        color: themeColor),
+                  ),
+
+                  ), // column name in the table
+                ),
+              ),
+            );
+      },
+    );
+  }
 
 }
