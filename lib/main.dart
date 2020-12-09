@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       title: widget.title,
       theme: ThemeData(
 
-        primarySwatch: Colors.blue,
+        primarySwatch: theme,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Home(title: accueil,),

@@ -43,7 +43,7 @@ class _RegisterState extends State<Register> {
             padding: EdgeInsets.all(10.0),
             child: ListView(
               children: <Widget>[
-                Center(child: Text("CashLine - Net2All",
+                Center(child: Text("Registration-uacApp",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,

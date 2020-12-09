@@ -195,7 +195,7 @@ class _ResourcesState extends State<Resources> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabController = new TabController(vsync:this,
-        length: 2);
+        length: 3);
 
   }
 
@@ -214,6 +214,7 @@ class _ResourcesState extends State<Resources> with TickerProviderStateMixin {
 
     return new Scaffold(
       appBar: new AppBar(
+        backgroundColor: themeColor,
         title: new Text(widget.title),
         bottom: new TabBar(
           tabs: <Tab>[

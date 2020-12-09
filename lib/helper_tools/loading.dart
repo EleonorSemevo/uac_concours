@@ -41,7 +41,7 @@ Drawer _createDrawer(BuildContext context) {
         DrawerHeader(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/uac.jgp"),
+                  image: AssetImage("assets/uac.jpg"),
                   fit: BoxFit.fitHeight)),
           child: Text(" "),
         ),
@@ -63,7 +63,7 @@ Drawer _createDrawer(BuildContext context) {
           ),
           // subtitle: Text("follow us on facebook"),
           dense: true,
-          leading: Icon(Icons.home,color: drawerTextColor,),
+          leading: Icon(Icons.home,color: drawerIconColor,),
           onTap: () {
             Navigator.of(context).push(new MaterialPageRoute(
                 builder: (BuildContext context) => Home(title: accueil,)));
@@ -82,7 +82,7 @@ Drawer _createDrawer(BuildContext context) {
           ),
           // subtitle: Text("follow us on facebook"),
           dense: true,
-          leading: Icon(Icons.star_border,color: drawerTextColor,),
+          leading: Icon(Icons.star_border,color: drawerIconColor,),
           onTap: () {
             Navigator.of(context).push(new MaterialPageRoute(
                 builder: (BuildContext context) => Opportunities(title: opportunite,)));
@@ -101,7 +101,7 @@ Drawer _createDrawer(BuildContext context) {
           ),
           // subtitle: Text("follow us on facebook"),
           dense: true,
-          leading: Icon(Icons.border_color,color: drawerTextColor,),
+          leading: Icon(Icons.border_color,color: drawerIconColor,),
           onTap: () {
             Navigator.of(context).push(new MaterialPageRoute(
                 builder: (BuildContext context) => Resources(title: resources_educ,)));
@@ -119,7 +119,7 @@ Drawer _createDrawer(BuildContext context) {
           ),
           // subtitle: Text("follow us on facebook"),
           dense: true,
-          leading: Icon(Icons.supervisor_account,color: drawerTextColor,),
+          leading: Icon(Icons.supervisor_account,color: drawerIconColor,),
           onTap: () {
             Navigator.of(context).push(new MaterialPageRoute(
                 builder: (BuildContext context) => Partner(title: partner,)));
@@ -138,10 +138,9 @@ Drawer _createDrawer(BuildContext context) {
           ),
           // subtitle: Text("follow us on facebook"),
           dense: true,
-          leading: Icon(Icons.contacts,color: drawerTextColor,),
+          leading: Icon(Icons.contacts,color: drawerIconColor,),
           onTap: () {
-            // Navigator.of(context).push(new MaterialPageRoute(
-            //     builder: (BuildContext context) => Contacts(title: contacts,)));
+            Navigator.pop(context);
           },
         ),
         SizedBox(height: 16,),
@@ -156,11 +155,19 @@ Drawer _createDrawer(BuildContext context) {
           ),
           // subtitle: Text("follow us on facebook"),
           dense: true,
-          leading: Icon(Icons.error_outline,color: drawerTextColor,),
+          leading: Icon(Icons.error_outline,color: drawerIconColor,),
           onTap: () {
-            // Navigator.of(context).push(new MaterialPageRoute(
-            //     builder: (BuildContext context) => Home(title: accueil,)));
-
+            showAboutDialog(context: context,
+              applicationName: appName,
+              children: <Widget>[
+                Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                ],
+              applicationVersion: '1.0.0',
+              applicationIcon: FlutterLogo(),
+              applicationLegalese: 'Powered by MasterCard'
+            );
           },
         ),
         SizedBox(height: 16,),
@@ -175,7 +182,7 @@ Drawer _createDrawer(BuildContext context) {
           ),
           // subtitle: Text("follow us on facebook"),
           dense: true,
-          leading: Icon(Icons.perm_identity,color: drawerTextColor,),
+          leading: Icon(Icons.perm_identity,color: drawerIconColor,),
           onTap: () {
             Navigator.of(context).push(new MaterialPageRoute(
                 builder: (BuildContext context) => Authenticate()));

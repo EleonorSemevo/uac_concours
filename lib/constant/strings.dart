@@ -14,3 +14,4 @@ const String partner= "Partenaires";
 
 
 const String title= "UAC app";
+const String appName= "UAC App";

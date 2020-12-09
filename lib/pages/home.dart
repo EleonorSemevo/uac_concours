@@ -24,7 +24,7 @@ class Home extends StatefulWidget {
           DrawerHeader(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/uac.jgp"),
+                    image: AssetImage("assets/uac.jpg"),
                     fit: BoxFit.fitHeight)),
             child: Text(" "),
           ),
@@ -46,7 +46,7 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.home,color: drawerTextColor,),
+            leading: Icon(Icons.home,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Home(title: accueil,)));
@@ -65,7 +65,7 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.star_border,color: drawerTextColor,),
+            leading: Icon(Icons.star_border,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Opportunities(title: opportunite,)));
@@ -84,7 +84,7 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.border_color,color: drawerTextColor,),
+            leading: Icon(Icons.border_color,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Resources(title: resources_educ,)));
@@ -102,7 +102,7 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.supervisor_account,color: drawerTextColor,),
+            leading: Icon(Icons.supervisor_account,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Partner(title: partner,)));
@@ -121,10 +121,9 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.contacts,color: drawerTextColor,),
+            leading: Icon(Icons.contacts,color: drawerIconColor,),
             onTap: () {
-              // Navigator.of(context).push(new MaterialPageRoute(
-              //     builder: (BuildContext context) => Contacts(title: contacts,)));
+              Navigator.pop(context);
             },
           ),
           SizedBox(height: 16,),
@@ -139,11 +138,19 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.error_outline,color: drawerTextColor,),
+            leading: Icon(Icons.error_outline,color: drawerIconColor,),
             onTap: () {
-              // Navigator.of(context).push(new MaterialPageRoute(
-              //     builder: (BuildContext context) => Home(title: accueil,)));
-
+              showAboutDialog(context: context,
+                applicationName: appName,
+                children: <Widget>[
+                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                ],
+                applicationVersion: '1.0.0',
+                applicationIcon: Image.asset('assets/logouac.jpg'),
+                applicationLegalese: 'Powered by Master Card'
+              );
             },
           ),
           SizedBox(height: 16,),
@@ -158,13 +165,15 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.perm_identity,color: drawerTextColor,),
+            leading: Icon(Icons.perm_identity,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Authenticate()));
             },
           ),
           SizedBox(height: 16,),
+
+
           Divider(
             height: 64,
             thickness: 0.5,
@@ -191,7 +200,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabController = new TabController(vsync:this,
-        length: 2);
+        length: 3);
 
   }
 
@@ -210,6 +219,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
     return new Scaffold(
       appBar: new AppBar(
+        backgroundColor: themeColor,
         title: new Text(widget.title),
         bottom: new TabBar(
           tabs: <Tab>[
