@@ -38,7 +38,7 @@ class _GaleriesState extends State<Galeries> {
         child: Stack(
           children: <Widget>[
             Container(
-                child:FutureBuilder<List>(
+                child:FutureBuilder(
                   future: getOpportunities(),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) print(snapshot.error);
