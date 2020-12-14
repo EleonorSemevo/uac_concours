@@ -67,14 +67,19 @@ class _GaleriesState extends State<Galeries> {
           children: List<Container>.generate(
               list.length, (int index) =>
               Container(child:
-               Card(
-                  elevation: 1.0,
-                  margin: EdgeInsets.all(5.0),
-                  child:
-                  Image.asset(
-                    list[index],
-                  ),
-                ),
+               GestureDetector(
+                 onTap: ()  {
+
+                 }
+                 ,
+                 child: Card(
+                 elevation: 1.0,
+                 margin: EdgeInsets.all(5.0),
+                 child:
+                 Image.asset(
+                   list[index],
+                 ),
+               ),)
               ),
           )
     );
