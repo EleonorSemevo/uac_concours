@@ -4,7 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
 import 'package:uac_concours/constant/strings.dart';
+import 'package:uac_concours/pages/foire_question.dart';
 import 'package:uac_concours/pages/partenaires.dart';
+import 'package:uac_concours/pages/podcast.dart';
+import 'package:uac_concours/pages/trucs_astuces.dart';
 
 import 'authenticate.dart';
 import 'home.dart';
@@ -26,7 +29,7 @@ class Resources extends StatefulWidget {
           DrawerHeader(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/uac.jgp"),
+                    image: AssetImage("assets/uac.jpg"),
                     fit: BoxFit.fitHeight)),
             child: Text(" "),
           ),
@@ -48,7 +51,7 @@ class Resources extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.home,color: drawerTextColor,),
+            leading: Icon(Icons.home,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Home(title: accueil,)));
@@ -67,7 +70,7 @@ class Resources extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.star_border,color: drawerTextColor,),
+            leading: Icon(Icons.star_border,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Opportunities(title: opportunite,)));
@@ -86,7 +89,7 @@ class Resources extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.border_color,color: drawerTextColor,),
+            leading: Icon(Icons.border_color,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Resources(title: resources_educ,)));
@@ -104,7 +107,7 @@ class Resources extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.supervisor_account,color: drawerTextColor,),
+            leading: Icon(Icons.supervisor_account,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Partner(title: partner,)));
@@ -123,10 +126,9 @@ class Resources extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.contacts,color: drawerTextColor,),
+            leading: Icon(Icons.contacts,color: drawerIconColor,),
             onTap: () {
-              // Navigator.of(context).push(new MaterialPageRoute(
-              //     builder: (BuildContext context) => Contacts(title: contacts,)));
+              Navigator.pop(context);
             },
           ),
           SizedBox(height: 16,),
@@ -141,11 +143,19 @@ class Resources extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.error_outline,color: drawerTextColor,),
+            leading: Icon(Icons.error_outline,color: drawerIconColor,),
             onTap: () {
-              // Navigator.of(context).push(new MaterialPageRoute(
-              //     builder: (BuildContext context) => Home(title: accueil,)));
-
+              showAboutDialog(context: context,
+                  applicationName: appName,
+                  children: <Widget>[
+                    Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                    Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                    Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                  ],
+                  applicationVersion: '1.0.0',
+                  applicationIcon: Image.asset('assets/logouac.jpg'),
+                  applicationLegalese: 'Powered by Master Card'
+              );
             },
           ),
           SizedBox(height: 16,),
@@ -160,7 +170,7 @@ class Resources extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.perm_identity,color: drawerTextColor,),
+            leading: Icon(Icons.perm_identity,color: drawerIconColor,),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Authenticate()));
@@ -239,9 +249,9 @@ class _ResourcesState extends State<Resources> with TickerProviderStateMixin {
       drawer: widget._createDrawer(context),
       body: new TabBarView(
         children: <Widget>[
-          new Container(),
-          new Container(),
-          new Container()
+          Astuces(),
+          PodCast(),
+          Questions()
         ],
         controller: _tabController,
       ),

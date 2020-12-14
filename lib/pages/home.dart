@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
 import 'package:uac_concours/constant/strings.dart';
+import 'package:uac_concours/pages/actuality.dart';
+import 'package:uac_concours/pages/galerie.dart';
 import 'package:uac_concours/pages/partenaires.dart';
+import 'package:uac_concours/pages/publications.dart';
 import 'package:uac_concours/pages/ressources_educative.dart';
 
 import 'authenticate.dart';
@@ -243,26 +246,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       drawer: widget._createDrawer(context),
       body: new TabBarView(
         children: <Widget>[
-          new Container(),
-          new Container(),
-          new Container()
+          Actuality(),
+          Publication(),
+          Galeries()
         ],
         controller: _tabController,
       ),
 
     );
 
-    // switch(displayPage){
-    //   case accueil:
-    //     return Container();
-    //     break;
-    //   case about:
-    //     return Container();
-    //     break;
-    //   default:
-    //     return Container();
-    //     break;
-    // }
   }
 
 
