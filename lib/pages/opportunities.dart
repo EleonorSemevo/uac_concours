@@ -361,9 +361,11 @@ class _OpportunitiesState extends State<Opportunities> {
                           SizedBox(height: 10,)
                         ],
                       )
-
-                  )],)
-            ));
+                  )
+                ]
+                  ,)
+            )
+        );
       },
     );
   }
