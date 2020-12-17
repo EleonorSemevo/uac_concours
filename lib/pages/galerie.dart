@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
+import 'package:uac_concours/pages/view_picture.dart';
 
 class Galeries extends StatefulWidget {
 
@@ -69,7 +70,9 @@ class _GaleriesState extends State<Galeries> {
               Container(child:
                GestureDetector(
                  onTap: ()  {
-
+                   Navigator.of(context).push(new MaterialPageRoute(
+                       builder: (BuildContext context) => ViewPicture(imgList: list,
+                       initial: index,)));
                  }
                  ,
                  child: Card(

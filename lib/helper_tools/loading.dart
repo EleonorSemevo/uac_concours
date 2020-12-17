@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
 import 'package:uac_concours/constant/strings.dart';
 import 'package:uac_concours/pages/authenticate.dart';
+import 'package:uac_concours/pages/contact_us.dart';
 import 'package:uac_concours/pages/home.dart';
 import 'package:uac_concours/pages/opportunities.dart';
 import 'package:uac_concours/pages/partenaires.dart';
@@ -140,7 +141,8 @@ Drawer _createDrawer(BuildContext context) {
           dense: true,
           leading: Icon(Icons.contacts,color: drawerIconColor,),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => Contacts(title: contacts,)));
           },
         ),
         SizedBox(height: 16,),
@@ -158,15 +160,15 @@ Drawer _createDrawer(BuildContext context) {
           leading: Icon(Icons.error_outline,color: drawerIconColor,),
           onTap: () {
             showAboutDialog(context: context,
-              applicationName: appName,
-              children: <Widget>[
-                Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
-                Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
-                Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                applicationName: appName,
+                children: <Widget>[
+                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
                 ],
-              applicationVersion: '1.0.0',
-              applicationIcon: FlutterLogo(),
-              applicationLegalese: 'Powered by MasterCard'
+                applicationVersion: '1.0.0',
+                applicationIcon: Image.asset('assets/logouac.jpg'),
+                applicationLegalese: 'Powered by Master Card'
             );
           },
         ),

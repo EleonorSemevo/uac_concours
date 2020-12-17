@@ -10,6 +10,7 @@ import 'package:uac_concours/pages/podcast.dart';
 import 'package:uac_concours/pages/trucs_astuces.dart';
 
 import 'authenticate.dart';
+import 'contact_us.dart';
 import 'home.dart';
 import 'opportunities.dart';
 
@@ -128,7 +129,8 @@ class Resources extends StatefulWidget {
             dense: true,
             leading: Icon(Icons.contacts,color: drawerIconColor,),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Contacts(title: contacts,)));
             },
           ),
           SizedBox(height: 16,),

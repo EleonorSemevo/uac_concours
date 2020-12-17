@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
 import 'package:uac_concours/constant/strings.dart';
 import 'package:uac_concours/pages/actuality.dart';
+import 'package:uac_concours/pages/contact_us.dart';
 import 'package:uac_concours/pages/galerie.dart';
 import 'package:uac_concours/pages/partenaires.dart';
 import 'package:uac_concours/pages/publications.dart';
@@ -126,7 +127,8 @@ class Home extends StatefulWidget {
             dense: true,
             leading: Icon(Icons.contacts,color: drawerIconColor,),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Contacts(title: contacts,)));
             },
           ),
           SizedBox(height: 16,),

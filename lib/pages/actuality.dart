@@ -76,7 +76,7 @@ class _ActualityState extends State<Actuality> {
                 flex: 4,
                 child: ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: AssetImage('assets/img.jpg'),
+                    backgroundImage: AssetImage('assets/uac.jpg'),
                   ),
                   title: Text('Title'),
                   trailing:  Icon(Icons.star_border),

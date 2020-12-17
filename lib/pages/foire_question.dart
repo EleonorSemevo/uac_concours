@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
+import 'package:uac_concours/constant/strings.dart';
 
 class Questions extends StatefulWidget {
 
@@ -41,8 +42,11 @@ class _QuestionsState extends State<Questions> {
                     if (snapshot.hasError) print(snapshot.error);
                     return snapshot.hasData
                         ? buildItemList(context,snapshot.data)
-                        : new Center(
-                      child: new CircularProgressIndicator(),
+                        : Center(
+                      child: Text('We going to show $foire_question',
+                        style: TextStyle(fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic),),
                     );
                   },
                 )

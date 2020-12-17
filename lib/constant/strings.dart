@@ -11,6 +11,9 @@ const String resources_educ= "Réssources éducatives";
 const String contacts= "Contacts";
 const String connect= "Login";
 const String partner= "Partenaires";
+const String postuler= "Postuler";
+const String details= "Opportunities Details";
+
 
 
 const String title= "UAC app";

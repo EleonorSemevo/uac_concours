@@ -14,7 +14,6 @@ class PodCast extends StatefulWidget {
 
 class _PodCastState extends State<PodCast> {
 
-  String displayPage;
 
   @override
   void initState() {
@@ -41,8 +40,11 @@ class _PodCastState extends State<PodCast> {
                     if (snapshot.hasError) print(snapshot.error);
                     return snapshot.hasData
                         ? buildItemList(context,snapshot.data)
-                        : new Center(
-                      child: new CircularProgressIndicator(),
+                        :Center(
+                      child: Text('We going to show  podcasts',
+                        style: TextStyle(fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic),),
                     );
                   },
                 )

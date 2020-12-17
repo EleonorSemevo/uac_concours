@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uac_concours/constant/colors.dart';
 import 'package:uac_concours/constant/strings.dart';
+import 'package:uac_concours/pages/contact_us.dart';
 import 'package:uac_concours/pages/ressources_educative.dart';
 
 import 'authenticate.dart';
@@ -125,7 +126,8 @@ class Partner extends StatefulWidget {
             dense: true,
             leading: Icon(Icons.contacts,color: drawerIconColor,),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context)=>Contacts(title: contacts,)));
             },
           ),
           SizedBox(height: 16,),
@@ -230,8 +232,11 @@ class _PartnerState extends State<Partner> with TickerProviderStateMixin {
                     if (snapshot.hasError) print(snapshot.error);
                     return snapshot.hasData
                         ? buildItemList(context,snapshot.data)
-                        : new Center(
-                      child: new CircularProgressIndicator(),
+                        : Center(
+                      child: Text('We going to show partners list',
+                        style: TextStyle(fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic),),
                     );
                   },
                 )

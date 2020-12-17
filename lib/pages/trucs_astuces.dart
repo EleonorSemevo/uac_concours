@@ -41,8 +41,11 @@ class _AstucesState extends State<Astuces> {
                     if (snapshot.hasError) print(snapshot.error);
                     return snapshot.hasData
                         ? buildItemList(context,snapshot.data)
-                        : new Center(
-                      child: new CircularProgressIndicator(),
+                        :Center(
+                      child: Text('We going to show  methods and things',
+                        style: TextStyle(fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic),),
                     );
                   },
                 )
