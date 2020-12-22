@@ -8,6 +8,7 @@ import 'package:uac_concours/pages/contact_us.dart';
 import 'package:uac_concours/pages/ressources_educative.dart';
 
 import 'authenticate.dart';
+import 'galerie.dart';
 import 'home.dart';
 import 'opportunities.dart';
 
@@ -57,25 +58,7 @@ class Partner extends StatefulWidget {
             },
           ),
           SizedBox(height: 16,),
-          ListTile(
-            title: Text(
-              opportunite,
-              style: TextStyle(
-                color: drawerTextColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            // subtitle: Text("follow us on facebook"),
-            dense: true,
-            leading: Icon(Icons.star_border,color: drawerIconColor,),
-            onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => Opportunities(title: opportunite,)));
 
-            },
-          ),
-          SizedBox(height: 16,),
           ListTile(
             title: Text(
               resources_educ,
@@ -126,8 +109,27 @@ class Partner extends StatefulWidget {
             dense: true,
             leading: Icon(Icons.contacts,color: drawerIconColor,),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context)=>Contacts(title: contacts,)));
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Contacts(title: contacts,)));
+            },
+          ),
+          SizedBox(height: 16,),
+          ListTile(
+            title: Text(
+              galerie,
+              style: TextStyle(
+                color: drawerTextColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            // subtitle: Text("follow us on facebook"),
+            dense: true,
+            leading: Icon(Icons.image,color: drawerIconColor,),
+            onTap: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Galeries(title: galerie,)));
+
             },
           ),
           SizedBox(height: 16,),
@@ -152,7 +154,8 @@ class Partner extends StatefulWidget {
                     Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
                   ],
                   applicationVersion: '1.0.0',
-                  applicationIcon: Image.asset('assets/logouac.jpg')
+                  applicationIcon: Image.asset('assets/logouac.jpg'),
+                  applicationLegalese: 'Powered by Master Card'
               );
             },
           ),

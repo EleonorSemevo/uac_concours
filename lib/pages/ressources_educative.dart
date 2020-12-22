@@ -11,6 +11,7 @@ import 'package:uac_concours/pages/trucs_astuces.dart';
 
 import 'authenticate.dart';
 import 'contact_us.dart';
+import 'galerie.dart';
 import 'home.dart';
 import 'opportunities.dart';
 
@@ -60,25 +61,7 @@ class Resources extends StatefulWidget {
             },
           ),
           SizedBox(height: 16,),
-          ListTile(
-            title: Text(
-              opportunite,
-              style: TextStyle(
-                color: drawerTextColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            // subtitle: Text("follow us on facebook"),
-            dense: true,
-            leading: Icon(Icons.star_border,color: drawerIconColor,),
-            onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => Opportunities(title: opportunite,)));
 
-            },
-          ),
-          SizedBox(height: 16,),
           ListTile(
             title: Text(
               resources_educ,
@@ -131,6 +114,25 @@ class Resources extends StatefulWidget {
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Contacts(title: contacts,)));
+            },
+          ),
+          SizedBox(height: 16,),
+          ListTile(
+            title: Text(
+              galerie,
+              style: TextStyle(
+                color: drawerTextColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            // subtitle: Text("follow us on facebook"),
+            dense: true,
+            leading: Icon(Icons.image,color: drawerIconColor,),
+            onTap: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Galeries(title: galerie,)));
+
             },
           ),
           SizedBox(height: 16,),

@@ -58,25 +58,7 @@ class Home extends StatefulWidget {
             },
           ),
           SizedBox(height: 16,),
-          ListTile(
-            title: Text(
-              opportunite,
-              style: TextStyle(
-                color: drawerTextColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            // subtitle: Text("follow us on facebook"),
-            dense: true,
-            leading: Icon(Icons.star_border,color: drawerIconColor,),
-            onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => Opportunities(title: opportunite,)));
 
-            },
-          ),
-          SizedBox(height: 16,),
           ListTile(
             title: Text(
               resources_educ,
@@ -134,6 +116,25 @@ class Home extends StatefulWidget {
           SizedBox(height: 16,),
           ListTile(
             title: Text(
+              galerie,
+              style: TextStyle(
+                color: drawerTextColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            // subtitle: Text("follow us on facebook"),
+            dense: true,
+            leading: Icon(Icons.image,color: drawerIconColor,),
+            onTap: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Galeries(title: galerie,)));
+
+            },
+          ),
+          SizedBox(height: 16,),
+          ListTile(
+            title: Text(
               about,
               style: TextStyle(
                 color: drawerTextColor,
@@ -146,15 +147,15 @@ class Home extends StatefulWidget {
             leading: Icon(Icons.error_outline,color: drawerIconColor,),
             onTap: () {
               showAboutDialog(context: context,
-                applicationName: appName,
-                children: <Widget>[
-                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
-                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
-                  Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
-                ],
-                applicationVersion: '1.0.0',
-                applicationIcon: Image.asset('assets/logouac.jpg'),
-                applicationLegalese: 'Powered by Master Card'
+                  applicationName: appName,
+                  children: <Widget>[
+                    Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                    Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                    Text(" Redirection temporaire indique que la page visitée a temporairement changée d’adresse. Elle est annulée manuellement."),
+                  ],
+                  applicationVersion: '1.0.0',
+                  applicationIcon: Image.asset('assets/logouac.jpg'),
+                  applicationLegalese: 'Powered by Master Card'
               );
             },
           ),
@@ -238,8 +239,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               ),
             ),
             new Tab(
-              text:galerie,
-              icon: new Icon(Icons.picture_in_picture),
+              text:opportunite,
+              icon: new Icon(Icons.star_half),
             ),
           ],
           controller: _tabController,
@@ -250,7 +251,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         children: <Widget>[
           Actuality(),
           Publication(),
-          Galeries()
+          Opportunities()
         ],
         controller: _tabController,
       ),

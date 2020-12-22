@@ -43,12 +43,17 @@ class _RegisterState extends State<Register> {
             padding: EdgeInsets.all(10.0),
             child: ListView(
               children: <Widget>[
-                Center(child: Text("Registration-uacApp",
+                Center(child: Text("Registration",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0),),),
+                SizedBox(height: 30,),
+                Image.asset(
+                  "assets/mcuac.png",
+                ),
+
                 SizedBox(height: 30,),
                 success?Row(
                   mainAxisAlignment: MainAxisAlignment.center,

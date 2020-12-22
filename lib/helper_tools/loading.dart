@@ -3,6 +3,7 @@ import 'package:uac_concours/constant/colors.dart';
 import 'package:uac_concours/constant/strings.dart';
 import 'package:uac_concours/pages/authenticate.dart';
 import 'package:uac_concours/pages/contact_us.dart';
+import 'package:uac_concours/pages/galerie.dart';
 import 'package:uac_concours/pages/home.dart';
 import 'package:uac_concours/pages/opportunities.dart';
 import 'package:uac_concours/pages/partenaires.dart';
@@ -72,25 +73,7 @@ Drawer _createDrawer(BuildContext context) {
           },
         ),
         SizedBox(height: 16,),
-        ListTile(
-          title: Text(
-            opportunite,
-            style: TextStyle(
-              color: drawerTextColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-          // subtitle: Text("follow us on facebook"),
-          dense: true,
-          leading: Icon(Icons.star_border,color: drawerIconColor,),
-          onTap: () {
-            Navigator.of(context).push(new MaterialPageRoute(
-                builder: (BuildContext context) => Opportunities(title: opportunite,)));
 
-          },
-        ),
-        SizedBox(height: 16,),
         ListTile(
           title: Text(
             resources_educ,
@@ -143,6 +126,25 @@ Drawer _createDrawer(BuildContext context) {
           onTap: () {
             Navigator.of(context).push(new MaterialPageRoute(
                 builder: (BuildContext context) => Contacts(title: contacts,)));
+          },
+        ),
+        SizedBox(height: 16,),
+        ListTile(
+          title: Text(
+            galerie,
+            style: TextStyle(
+              color: drawerTextColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          // subtitle: Text("follow us on facebook"),
+          dense: true,
+          leading: Icon(Icons.image,color: drawerIconColor,),
+          onTap: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => Galeries(title: galerie,)));
+
           },
         ),
         SizedBox(height: 16,),
