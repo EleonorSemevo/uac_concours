@@ -162,7 +162,7 @@ class Home extends StatefulWidget {
           SizedBox(height: 16,),
           ListTile(
             title: Text(
-              connect,
+              isLogged?disconnect:connect,
               style: TextStyle(
                 color: drawerTextColor,
                 fontWeight: FontWeight.bold,
@@ -171,8 +171,10 @@ class Home extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.perm_identity,color: drawerIconColor,),
+            leading:isLogged? Icon(Icons.directions_run,color: drawerIconColor,): Icon(Icons.perm_identity,color: drawerIconColor,),
             onTap: () {
+              if(isLogged)
+                isLogged=false;
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Authenticate()));
             },
@@ -198,7 +200,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
 
-  String displayPage;
+  bool showDialogue=true;
 
   TabController _tabController;
 
@@ -251,8 +253,31 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         children: <Widget>[
           Actuality(),
           Publication(),
-          Opportunities()
-        ],
+          isLogged? Opportunities():Column(
+
+            children: [
+              SizedBox(height: 200,),
+              Text('You must have to sign in first.',
+                style: TextStyle(fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),),
+              SizedBox(height: 30,),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>Authenticate()));
+                },
+                child: Text(
+                  "Sign In now",
+                  style: TextStyle(
+                      color: themeColor,
+                      fontSize: 16,
+                      decoration: TextDecoration.underline),
+                ),
+              )
+            ],
+          )
+
+    ],
         controller: _tabController,
       ),
 

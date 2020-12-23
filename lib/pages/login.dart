@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uac_concours/constant/colors.dart';
+import 'package:uac_concours/constant/strings.dart';
 import 'package:uac_concours/constant/widget_designe.dart';
 import 'package:uac_concours/helper_tools/loading.dart';
+import 'package:uac_concours/pages/home.dart';
 
 
 class Login extends StatefulWidget {
@@ -25,6 +27,17 @@ class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
   bool isLoading = false,success=true,logged=false;
   loginFunc() async {
+
+    if(formKey.currentState.validate()){
+      setState(() {
+        isLogged=true;
+      });
+
+      if(isLogged)
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context)=>Home(title: accueil,)));
+    }
+
 
   }
 

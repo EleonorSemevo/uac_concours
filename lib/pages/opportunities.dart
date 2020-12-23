@@ -23,7 +23,6 @@ class Opportunities extends StatefulWidget {
 
 class _OpportunitiesState extends State<Opportunities> {
 
-  String displayPage;
 
 
   @override
@@ -69,7 +68,6 @@ class _OpportunitiesState extends State<Opportunities> {
       ),
 
     );
-
   }
 
 

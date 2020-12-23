@@ -161,7 +161,7 @@ class Galeries extends StatefulWidget {
           SizedBox(height: 16,),
           ListTile(
             title: Text(
-              connect,
+              isLogged?disconnect:connect,
               style: TextStyle(
                 color: drawerTextColor,
                 fontWeight: FontWeight.bold,
@@ -170,8 +170,10 @@ class Galeries extends StatefulWidget {
             ),
             // subtitle: Text("follow us on facebook"),
             dense: true,
-            leading: Icon(Icons.perm_identity,color: drawerIconColor,),
+            leading:isLogged? Icon(Icons.directions_run,color: drawerIconColor,): Icon(Icons.perm_identity,color: drawerIconColor,),
             onTap: () {
+              if(isLogged)
+                isLogged=false;
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Authenticate()));
             },
